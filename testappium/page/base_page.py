@@ -24,10 +24,9 @@ class BasePage:
         logging.info(f"当前在 {self.__class__.__name__} 页")
 
     def find(self, locator, value: str = None):
-        logging.info(locator)
-        logging.info(value)
         try:
             # 寻找控件
+            logging.info(f'定位: {locator} {value}')
             return self._self_find(locator, value)
         except Exception as e:
             # 超过弹窗处理次数则直接跑普通 find_element
@@ -93,6 +92,7 @@ class BasePage:
 
     def find_by_text(self, key):
         return self.find(self.text(key))
+
 
 if __name__ == '__main__':
     for key, element in BasePage._black_list.items():
